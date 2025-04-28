@@ -3,6 +3,9 @@ import numpy as np
 import scipy.stats as stats
 import matplotlib.pyplot as plt
 import seaborn as sns
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # Lee el archivo CSV
 df = pd.read_csv('./data/shopping_trends_updated.csv')
@@ -69,8 +72,6 @@ if 'Gender' in df.columns and 'Purchase Amount (USD)' in df.columns:
 
 # --- Estadística Inferencial Avanzada ---
 
-# 1. Prueba U de Mann-Whitney (no paramétrica)
-# Comparar gasto entre Hombres y Mujeres sin suponer normalidad
 if 'Gender' in df.columns and 'Purchase Amount (USD)' in df.columns:
     males = df[df['Gender'] == 'Male']['Purchase Amount (USD)'].dropna()
     females = df[df['Gender'] == 'Female']['Purchase Amount (USD)'].dropna()
