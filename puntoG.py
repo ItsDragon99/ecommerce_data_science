@@ -1,33 +1,36 @@
 import pandas as pd
 
-# Carga el CSV
+# 1. Carga el CSV
 df = pd.read_csv('./data/shopping_trends_updated.csv')
 
-# 1. Definir indicador de recompra:
-#    True si el cliente ha tenido al menos 1 compra previa
-df['recompra'] = df['Previous Purchases'] > 0
+# 2. Obtén el conteo por categoría
+counts = df['Frequency of Purchases'].value_counts()
 
-# 2. Probabilidad global de recompra
-prob_global = df['recompra'].mean()
+# 3. Mapea cada etiqueta a su intervalo medio en semanas
+#    Asumimos 52 semanas al año, 12 meses, 4 trimestres...
+interval_weeks = {
+    'Weekly': 1,
+    'Fortnightly': 2,
+    'Bi-Weekly': 2,
+    'Monthly': 52 / 12,       # ≈ 4.333 semanas
+    'Quarterly': 52 / 4,      # 13 semanas
+    'Every 3 Months': 52 / 4, # 13 semanas
+    'Annually': 52            # 52 semanas
+}
 
-# 3. Probabilidad de recompra por segmento
-#    a) Por frecuencia de compra
-prob_por_frecuencia = df.groupby('Frequency of Purchases')['recompra'].mean()
+# 4. Construye un DataFrame con los resultados
+df_counts = (
+    counts
+    .rename_axis('Frequency')     # pone el índice como columna 'Frequency'
+    .reset_index(name='Count')    # convierte a DataFrame con columna 'Count'
+)
+df_counts['Interval_weeks'] = df_counts['Frequency'].map(interval_weeks)
 
-#    b) Por categoría de producto
-prob_por_categoria = df.groupby('Category')['recompra'].mean()
+# 5. Probabilidad de recompra en la próxima semana
+df_counts['P_next_week'] = 1 / df_counts['Interval_weeks']
 
-#    c) Por método de pago
-prob_por_pago = df.groupby('Payment Method')['recompra'].mean()
+# 6. (Opcional) Normaliza para que la suma sea 1
+df_counts['P_norm'] = df_counts['P_next_week'] / df_counts['P_next_week'].sum()
 
-# Mostrar resultados
-print(f"Probabilidad global de recompra: {prob_global:.2%}\n")
-
-print("Probabilidad de recompra por frecuencia de compras:")
-print(prob_por_frecuencia.to_string(), "\n")
-
-print("Probabilidad de recompra por categoría de producto:")
-print(prob_por_categoria.to_string(), "\n")
-
-print("Probabilidad de recompra por método de pago:")
-print(prob_por_pago.to_string())
+# 7. Muestra el resultado
+print(df_counts)
