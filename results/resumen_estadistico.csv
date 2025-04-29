@@ -1,0 +1,19 @@
+,media,mediana,moda,minimo,maximo,rango,Rango Intercuartílico
+Customer ID,1950.5,1950.5,1.0,1.0,3900.0,3899.0,1949.5
+Age,44.06846153846154,44.0,69.0,18.0,70.0,52.0,26.0
+Gender,0.68,Male,Male,Female,Male,1.0,1.0
+Item Purchased,12.035384615384615,Jewelry,Blouse,Backpack,T-shirt,24.0,12.0
+Category,1.0017948717948717,Clothing,Clothing,Accessories,Outerwear,3.0,1.0
+Purchase Amount (USD),59.76435897435898,60.0,32.0,20.0,100.0,80.0,42.0
+Location,24.266410256410257,Missouri,Montana,Alabama,Wyoming,49.0,24.0
+Size,1.12,M,M,L,XL,3.0,2.0
+Color,12.10948717948718,Maroon,Olive,Beige,Yellow,24.0,12.0
+Season,1.4928205128205128,Spring,Spring,Fall,Winter,3.0,1.25
+Review Rating,3.7499487179487176,3.7,3.4,2.5,5.0,2.5,1.3000000000000003
+Subscription Status,0.27,No,No,No,Yes,1.0,1.0
+Shipping Type,2.5143589743589745,Next Day Air,Free Shipping,2-Day Shipping,Store Pickup,5.0,3.0
+Discount Applied,0.43,No,No,No,Yes,1.0,1.0
+Promo Code Used,0.43,No,No,No,Yes,1.0,1.0
+Previous Purchases,25.35153846153846,25.0,31.0,1.0,50.0,49.0,25.0
+Payment Method,2.5123076923076924,Credit Card,PayPal,Bank Transfer,Venmo,5.0,3.0
+Frequency of Purchases,2.974871794871795,Fortnightly,Every 3 Months,Annually,Weekly,6.0,4.0

@@ -1,0 +1,13 @@
+Probabilidad de que el comprador sea Hombre: 0.68
+Probabilidad de uso de Tarjeta de Crédito: 0.17
+Prueba t de Student entre Hombres y Mujeres:
+t = -0.8821, p = 0.3778
+→ No se rechaza H0: No hay diferencia significativa en el gasto promedio.
+
+Prueba U de Mann-Whitney:
+U = 1625536.5000, p = 0.3715
+→ No se rechaza H0: No hay diferencia significativa en el gasto promedio.
+
+Prueba de normalidad (Shapiro-Wilk):
+W = 0.9502, p = 0.0000
+→ Los datos NO siguen una distribución normal.
